@@ -1,0 +1,73 @@
+﻿<Page x:Class="Waifu_Dreams_CityHelperApplication.Pages.MainPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      mc:Ignorable="d"
+      Title="外府梦城修改器(Waifu_Dreams_City TRainer)"
+      Height="300"
+      Width="Auto">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <TextBlock
+            Grid.Row="0"
+            Grid.Column="0"
+            Grid.ColumnSpan="3"
+            Foreground="White"
+            Background="LightSkyBlue"
+            FontSize="13"
+            Padding="5"
+            VerticalAlignment="Center"
+            Text=" 选择外府梦城版本(Select Waifu_Dreams_City version):" />
+        
+        <TextBlock
+            Grid.Row="1"
+            Grid.Column="0"
+            Margin="5 2 0 0"
+            Text="1." />
+        <TextBlock
+            Grid.Row="1"
+            Grid.Column="1"
+            Margin="2 2 0 0"
+            MinWidth="400"
+            Text="外府梦城 Build 97&#x0A;(Waifu_Dreams_City Build 97)" />
+        <Button
+            Name="Btn_Version_97"
+            Grid.Row="1"
+            Grid.Column="2"
+            Content="选择(Go)"
+            Click="OnVersionSelectClick" />
+        
+        <TextBlock
+            Grid.Row="2"
+            Grid.Column="0"
+            Visibility="Hidden"
+            Margin="5 5 0 0"
+            Text="2." />
+        <TextBlock
+            Grid.Row="2"
+            Grid.Column="1"
+            Visibility="Hidden"
+            Margin="2 5 0 0"
+            Text="外府梦城 Build 98&#x0A;(Waifu_Dreams_City Build 98)" />
+        <Button
+            Name="Btn_Version_98"
+            Grid.Row="2"
+            Grid.Column="2"
+            Visibility="Hidden"
+            Margin="0 5 0 0"
+            Content="选择(Go)"
+            Click="OnVersionSelectClick" />
+    </Grid>
+</Page>

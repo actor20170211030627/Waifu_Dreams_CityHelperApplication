@@ -1,0 +1,19 @@
+﻿<Window x:Class="Waifu_Dreams_CityHelperApplication.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="外府梦城修改器(Waifu_Dreams_City TRainer)-actor2015(v1.0.0)"
+        Height="Auto"
+        Width="Auto"
+        Background="White"
+        SizeToContent="WidthAndHeight"
+        Icon="Resources/Images/Waifu_Dreams_City.png">
+    <ScrollViewer>
+        <!-- 右侧内容区域 -->
+        <Frame
+            x:Name="ContentFrame"
+            NavigationUIVisibility="Hidden" />
+    </ScrollViewer>
+</Window>

@@ -1,0 +1,6 @@
+<project outputDir="E:\workspace_cpp\Waifu_Dreams_City_HelperApplication\Waifu_Dreams_CityHelperApplication\bin\Confused" baseDir="E:\workspace_cpp\Waifu_Dreams_City_HelperApplication" xmlns="http://confuser.codeplex.com">
+  <rule pattern="true" preset="maximum" inherit="false" />
+  <module path="Waifu_Dreams_CityHelperApplication\bin\Release\Waifu_Dreams_CityHelperApplication.exe" />
+  <module path="packages\Memory.dll.x86.1.2.27\lib\netstandard2.0\Memory.dll" />
+  <module path="packages\MouseKeyHook.5.6.0\lib\net40\Gma.System.MouseKeyHook.dll" />
+</project>
