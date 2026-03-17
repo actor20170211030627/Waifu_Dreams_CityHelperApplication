@@ -99,6 +99,21 @@ namespace Waifu_Dreams_CityHelperApplication.Utils {
             return Memory.WriteMemory(code, "float", value.ToString(CultureInfo.InvariantCulture));
         }
 
+        /// <summary>读内存值Double</summary>
+        /// <param name="code">address, module + pointer + offset, module + offset OR label in .ini file.</param>
+        /// <returns></returns>
+        public static double ReadDouble(string code) {
+            return Memory.ReadDouble(code, "", false);
+        }
+
+        /// <summary>将Double写入内存</summary>
+        /// <param name="code">address, module + pointer + offset, module + offset OR label in .ini file.</param>
+        /// <param name="value">value to write to address.</param>
+        /// <returns>是否写入成功</returns>
+        public static bool WriteDouble(string code, double value) {
+            return Memory.WriteMemory(code, "double", value.ToString(CultureInfo.InvariantCulture));
+        }
+
         /// <summary>读内存值long</summary>
         /// <param name="code">address, module + pointer + offset, module + offset OR label in .ini file.</param>
         /// <returns></returns>

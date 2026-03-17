@@ -15,14 +15,15 @@ namespace Waifu_Dreams_CityHelperApplication.Utils {
         //人物等级
         public const string Level = ModuleName + "+0x060E2910,0x0,0xBC0";
         //性饥渴进度
-        private const string Sexual_Hunger_Progress = ModuleName + "+0x060E2910,0x0,0xBEC";
+        private const string Sexual_Hunger_Progress = ModuleName + "+0x060E2910,0x0,0xBE8";
+        private const string Sexual_Hunger_Max = ModuleName + "+0x060E2910,0x0,0xBF0";
         //魅力值(Max=99999)
         public const string Charm_Value = ModuleName + "+0x060E2910,0x0,0xC20";
 
 
-        private const string XAxis  = ModuleName + "+0x00532A28,0x2B8,0x7C4";
-        private const string YAxis  = ModuleName + "+0x00532A28,0x2B8,0x7C8";
-        public const string ZAxis   = ModuleName + "+0x00532A28,0x2B8,0x7CC";
+        private const string YAxis  = ModuleName + "+0x06345BE0,0x16ED0,0x210,0x0,0x260";
+        private const string XAxis  = ModuleName + "+0x06345BE0,0x16ED0,0x210,0x0,0x268";
+        public const string ZAxis   = ModuleName + "+0x06345BE0,0x16ED0,0x210,0x0,0x270";
         
         //人物朝向的角度
         private const string DegreePersonFront  = ModuleName + "+0x00532A28,0x2B8,0x7D0";
@@ -231,8 +232,14 @@ namespace Waifu_Dreams_CityHelperApplication.Utils {
         /// <param name="isFreeze"></param>
         public static void FreezeSexual_Hunger(bool isFreeze) {
             if (isFreeze) {
-                float value = MemoryDllUtils.ReadFloat(Sexual_Hunger_Progress);
-                bool isSuccess = MemoryDllUtils.FreezeValue(Sexual_Hunger_Progress, "float", value);
+                // float value = MemoryDllUtils.ReadFloat(Sexual_Hunger_Progress);
+                // bool isSuccess = MemoryDllUtils.FreezeValue(Sexual_Hunger_Progress, "float", value);
+                
+                //随等级和加点增加而增加?
+                // double sexualHungerMax = MemoryDllUtils.ReadDouble(Sexual_Hunger_Max);
+                double sexualHunger = MemoryDllUtils.ReadDouble(Sexual_Hunger_Progress);
+                if (sexualHunger <= 0.0) sexualHunger = 99.0;
+                bool isSuccess = MemoryDllUtils.FreezeValue(Sexual_Hunger_Progress, "double", sexualHunger);
                 if (isSuccess) {
                     PlayAng();
                 } else {
