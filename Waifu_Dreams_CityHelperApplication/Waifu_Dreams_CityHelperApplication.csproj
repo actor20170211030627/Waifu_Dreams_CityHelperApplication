@@ -81,15 +81,22 @@
             <Generator>MSBuild:Compile</Generator>
             <SubType>Designer</SubType>
         </ApplicationDefinition>
+        <Compile Include="Pages\Build_101_Page.xaml.cs">
+          <DependentUpon>Build_101_Page.xaml</DependentUpon>
+        </Compile>
         <Compile Include="Pages\MainPage.xaml.cs">
           <DependentUpon>MainPage.xaml</DependentUpon>
         </Compile>
         <Compile Include="Pages\Build_97_Page.xaml.cs">
           <DependentUpon>Build_97_Page.xaml</DependentUpon>
         </Compile>
+        <Compile Include="Utils\Md5Utils.cs" />
         <Compile Include="Utils\MemoryDllUtils.cs" />
+        <Compile Include="Utils\MessageBoxUtils.cs" />
+        <Compile Include="Utils\ProcessUtils.cs" />
         <Compile Include="Utils\SoundPlayerUtils.cs" />
-        <Compile Include="Utils\TRainerHelper.cs" />
+        <Compile Include="Utils\TRainer101Helper.cs" />
+        <Compile Include="Utils\TRainer97Helper.cs" />
         <Page Include="MainWindow.xaml">
             <Generator>MSBuild:Compile</Generator>
             <SubType>Designer</SubType>
@@ -102,6 +109,7 @@
             <DependentUpon>MainWindow.xaml</DependentUpon>
             <SubType>Code</SubType>
         </Compile>
+        <Page Include="Pages\Build_101_Page.xaml" />
         <Page Include="Pages\MainPage.xaml" />
         <Page Include="Pages\Build_97_Page.xaml" />
     </ItemGroup>
@@ -127,14 +135,12 @@
     <ItemGroup>
       <Content Include="app.manifest" />
       <Content Include="Assets\Waifu_Dreams_City.ico" />
+      <Resource Include="Resources\Images\waifu-dreams-city.jpg" />
+      <Resource Include="Resources\Images\money_dollar.png" />
       <Resource Include="Resources\Images\Level.png" />
-      <Resource Include="Resources\Images\Waifu_Dreams_City.png" />
-      <Resource Include="Resources\Images\icon_fast_run.png" />
       <Resource Include="Resources\Images\icon_jump.png" />
-      <Resource Include="Resources\Images\question_mark_red.png" />
       <Resource Include="Resources\Medias\00004.wav" />
       <Resource Include="Resources\Medias\click.wav" />
-      <Resource Include="Resources\Medias\process_not_found.xm" />
       <Resource Include="Resources\Images\icon_switch_green2.png">
         <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       </Resource>
@@ -144,9 +150,6 @@
       <Resource Include="Resources\Medias\activate.wav" />
       <Resource Include="Resources\Medias\deactivate.wav" />
       <Resource Include="Resources\Images\north_south.png">
-        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      </Resource>
-      <Resource Include="Resources\Images\money_split.png">
         <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       </Resource>
       <Resource Include="Resources\Images\east_west.png">

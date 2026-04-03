@@ -4,16 +4,18 @@ using System.Windows.Controls;
 using System.Windows.Media.Imaging;
 using System.Windows.Threading;
 using Waifu_Dreams_CityHelperApplication.Utils;
-using MessageBox = System.Windows.MessageBox;
 
 namespace Waifu_Dreams_CityHelperApplication.Pages {
-    
-    public partial class Build_97_Page : Page {
+    public partial class Build_101_Page : Page {
         
         //进程是否打开
         private bool _isProcOpen = false;
         //修改器是否激活
         private bool _isTRainerOpen = true;
+        //冻结钱💰
+        private bool isFreezeMoney = false;
+        //冻结魅力值
+        private bool isFreezeCharm = false;
         //是否冻结性饥渴
         private bool isFreezeSexual_Hunger = false;
         //是否取消冻结所有
@@ -22,7 +24,7 @@ namespace Waifu_Dreams_CityHelperApplication.Pages {
 
         private DispatcherTimer _dispatcherTimer;
 
-        public Build_97_Page() {
+        public Build_101_Page() {
             InitializeComponent();
             
             this.Loaded += MyPage_Loaded;  // 订阅Loaded事件
@@ -32,7 +34,7 @@ namespace Waifu_Dreams_CityHelperApplication.Pages {
             InitializeMouseKeyHook();
 
             //钱Money
-            MemoryDllUtils.BindToUI<int>(TRainer97Helper.Money, delegate(string s) {
+            MemoryDllUtils.BindToUI<int>(TRainer101Helper.Money, delegate(string s) {
                 // Console.WriteLine($"钱Money: {s}");
                 // 使用 Dispatcher 切换到 UI 线程
                 Dispatcher.Invoke(() => {
@@ -40,13 +42,13 @@ namespace Waifu_Dreams_CityHelperApplication.Pages {
                 });
             });
             //人物等级
-            MemoryDllUtils.BindToUI<int>(TRainer97Helper.Level, delegate(string s) {
+            MemoryDllUtils.BindToUI<int>(TRainer101Helper.Level, delegate(string s) {
                 Dispatcher.Invoke(() => {
                     this.TB_Level.Text = s;
                 });
             });
             //魅力值
-            MemoryDllUtils.BindToUI<int>(TRainer97Helper.Charm_Value, delegate(string s) {
+            MemoryDllUtils.BindToUI<int>(TRainer101Helper.Charm_Value, delegate(string s) {
                 Dispatcher.Invoke(() => {
                     this.TB_Charm.Text = s;
                 });
@@ -63,7 +65,7 @@ namespace Waifu_Dreams_CityHelperApplication.Pages {
             _dispatcherTimer = new DispatcherTimer();
             _dispatcherTimer.Interval = TimeSpan.FromMilliseconds(300.0);
             _dispatcherTimer.Tick += delegate(object sender, EventArgs args) {
-                _isProcOpen = MemoryDllUtils.OpenProcess(TRainer97Helper.ProcessName);
+                _isProcOpen = MemoryDllUtils.OpenProcess(TRainer101Helper.ProcessName);
                 if (_isProcOpen) {
                     if (!_isTRainerOpen) return;
 
@@ -92,7 +94,7 @@ namespace Waifu_Dreams_CityHelperApplication.Pages {
         
 
         private void Btn_OnClick(object sender, RoutedEventArgs e) {
-            TRainer97Helper.PlayClick();
+            TRainer101Helper.PlayClick();
 
             if (!(sender is FrameworkElement fe)) return;
             string name = fe.Name;
@@ -100,9 +102,9 @@ namespace Waifu_Dreams_CityHelperApplication.Pages {
             //激活修改器(TRainer activate)
             if (name == this.Image_TRainer_State.Name) {
                 _isTRainerOpen = !_isTRainerOpen;
-                Uri uri = TRainer97Helper.GetSwitchUri(_isTRainerOpen);
+                Uri uri = TRainer101Helper.GetSwitchUri(_isTRainerOpen);
                 this.Image_TRainer_State.Source = new BitmapImage(uri);
-                TRainer97Helper.PlayActivate(_isTRainerOpen);
+                TRainer101Helper.PlayActivate(_isTRainerOpen);
                 if (!_isTRainerOpen) {
                     UnfreezeAll();
                 }
@@ -110,7 +112,7 @@ namespace Waifu_Dreams_CityHelperApplication.Pages {
             }
             //关于
             if (name == this.Btn_About.Name) {
-                MessageBox.Show(TRainer97Helper.StrAbout, "说明(explain):");
+                MessageBox.Show(TRainer101Helper.StrAbout, "说明(explain):");
                 return;
             }
 
@@ -119,18 +121,18 @@ namespace Waifu_Dreams_CityHelperApplication.Pages {
             
             //钱💰
             if (name == this.Btn_Money.Name) {
-                TRainer97Helper.MoneyAdd(10_000_000);
+                TRainer101Helper.MoneyAdd(10_000_000);
                 return;
             }
             
             //人物等级
             if (name == this.Btn_Level.Name) {
-                TRainer97Helper.LevelAdd(2);
+                TRainer101Helper.LevelAdd(2);
                 return;
             }
             //魅力值💃
             if (name == this.Btn_Charm.Name) {
-                TRainer97Helper.CharmAdd(1000);
+                TRainer101Helper.CharmAdd(1000);
                 return;
             }
             
@@ -144,9 +146,9 @@ namespace Waifu_Dreams_CityHelperApplication.Pages {
             //冻结性饥渴(Sexual Hunger)
             if (name == this.Image_Freeze_Sexual_Hunger.Name) {
                 isFreezeSexual_Hunger = !isFreezeSexual_Hunger;
-                Uri uri = TRainer97Helper.GetSwitchUri(isFreezeSexual_Hunger);
+                Uri uri = TRainer101Helper.GetSwitchUri(isFreezeSexual_Hunger);
                 this.Image_Freeze_Sexual_Hunger.Source = new BitmapImage(uri);
-                TRainer97Helper.FreezeSexual_Hunger(isFreezeSexual_Hunger);
+                TRainer101Helper.FreezeSexual_Hunger(isFreezeSexual_Hunger);
                 if (isFreezeSexual_Hunger) {
                     isUnfreezeAll = false;
                 }
@@ -160,7 +162,7 @@ namespace Waifu_Dreams_CityHelperApplication.Pages {
         /// </summary>
         private void UnfreezeAll() {
             if (isUnfreezeAll) return;
-            TRainer97Helper.FreezeSexual_Hunger(false);
+            TRainer101Helper.FreezeSexual_Hunger(false);
             isUnfreezeAll = true;
         }
         
